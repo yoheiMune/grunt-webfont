@@ -66,49 +66,51 @@ Webフォントに使うSVGまたはEPSファイルを指定します。String�
 
 Type: `string`
 
-生成結果のファイルを出力するディレクトリを指定してください。
+生成結果のファイルを出力するディレクトリ。
 
 #### destCss
 
-Type: `string` Default: _`dest` value_
+Type: `string` Default値: _`dest`_
 
+生成されるCSSファイルの出力先ディレクトリ（fontディレクトリと別にしたい場合に指定してください）。
 Directory for resulting CSS files (if different than font directory).
 
-#### Options
+#### オプション（Options）
 
 #### font
 
 Type: `string` Default: `icons`
-Name of font and base name of font files.
+フォント名、ならびにフォントファイル名
 
 #### hashes
 
 Type: `boolean` Default: `true`
 
-Append font file names with unique string to flush browser cache when you update your icons.
+フォントファイル名に一意な文字列を付けるか否かを指定します。一意な名前をつけることでブラウザキャッシュを行うことが出来ます。
 
 #### styles
 
 Type: `string|array` Default: `'font,icon'`
 
-List of styles to be added to CSS files: `font` (`font-face` declaration), `icon` (base `.icon` class), `extra` (extra stuff for Bootstrap (only for `syntax` = `'bootstrap'`).
+CSSファイルに出力されるスタイルのリストを指定します: `font` (`font-face`の宣言), `icon` (`.icon`クラス), `extra` (Bootstrap向けの追加要素 (only for `syntax` = `'bootstrap'`).
 
 #### types
 
 Type: `string|array` Default: `'eot,woff,ttf'`
 
-Font files types to generate.
+生成するフォントファイルの種類
 
 #### order
 
 Type: `string|array` Default: `'eot,woff,ttf,svg'`
 
-Order of `@font-face`’s `src` values in CSS file.
+`@font-face`の`src`属性に記載する順序
 
 #### syntax
 
 Type: `string` Default: `bem`
 
+Iconクラスのシンタックス。
 Icon classes syntax. `bem` for double class names: `icon icon_awesome` or `bootstrap` for single class names: `icon-awesome`.
 
 
@@ -116,11 +118,10 @@ Icon classes syntax. `bem` for double class names: `icon icon_awesome` or `boots
 
 Type: `string` Default: `null`
 
-Custom CSS template path (see `tasks/templates` for some examples). Should be used instead of `syntax`. (You probably need to define `htmlDemoTemplate` option too.)
+CSSテンプレートのファイルパス（サンプルに`tasks/templates`を参照）。`syntax`の代わりに利用してください。（`htmlDemoTemplate`オプションも指定する必要がおそらくあります）。
+テンプレートは、同名のCSSとJSONファイルから構成されます。
 
-Template is a pair of CSS and JSON files with the same name.
-
-For example, your Gruntfile:
+Gruntfile.js記載例:
 
 ```js
 options: {
@@ -151,7 +152,7 @@ options: {
 
 Type: `object` Default: `{}`
 
-Extends/overrides CSS template or syntax’s JSON file. Allows custom class names in default css templates.
+CSSテンプレートやシンタックスを指定するJSONファイルを拡張（または上書き）します。デフォルトのCSSテンプレートからカスタマイズしたクラス名に変更することが出来ます。
 
 ``` javascript
 options: {
@@ -167,13 +168,13 @@ options: {
 
 Type: `string` Default: `'css'`
 
-Stylesheet type. Can be css, sass, scss, less... If `sass` or `scss` is used, `_` will prefix the file (so it can be a used as a partial).
+スタイルシートのタイプを指定します。css, sass, scss, lessなどが指定可能です。もしsassかscssを利用している場合、`_`がファイル名の先頭に追加されます（その結果、ファイルを部分ファイル（端切れ）として利用出来ます）。
 
 #### relativeFontPath
 
 Type: `string` Default: `null`
 
-Custom font path. Will be used instead of `destCss` *in* CSS file. Useful with CSS preprocessors.
+フォントファイルのパス。Will be used instead of `destCss` *in* CSS file. Useful with CSS preprocessors.
 
 #### htmlDemo
 
