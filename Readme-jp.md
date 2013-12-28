@@ -174,49 +174,50 @@ Type: `string` Default: `'css'`
 
 Type: `string` Default: `null`
 
-フォントファイルのパス。Will be used instead of `destCss` *in* CSS file. Useful with CSS preprocessors.
+フォントファイルのパス。`destCss`の代わりとしてCSSファイルの中で利用するでしょう。CSSプリプロセッサで利用する時に役立ちます。
 
 #### htmlDemo
 
 Type: `boolean` Default: `true`
 
-If `true`, an HTML file will be available (by default, in `destCSS` folder) to test the render.
+`true`を指定することで、表示確認用のHTMLファイルが利用可能です。デフォルトでは`destCSS`ディレクトリに出力されます。
 
 #### htmlDemoTemplate
 
 Type: `string` Default: `null`
 
-Custom demo HTML template path (see `tasks/templates/demo.html` for an example) (requires `htmlDemo` option to be true).
+デモ用のカスタムHTMLテンプレートのパス（実装例は`tasks/templates/demo.html`を参照）（`htmlDemo`がtrueである必要があります）。
 
 #### destHtml
 
 Type: `string` Default: _`destCss` value_
 
-Custom demo HTML demo path (requires `htmlDemo` option to be true).
+デモ用HTMLファイルの出力先パス（`htmlDemo`がtrueである必要があります）。
 
 #### embed
 
 Type: `string|array` Default: `false`
 
-If `true` embeds WOFF (*only WOFF*) file as data:uri.
+`true`を指定した場合、WOFF（*WOFFのみ対応*）ファイルをDataURIとしてCSSファイルに埋め込むことができます。
 
-IF `ttf` or `woff` or `ttf,woff` embeds TTF or/and WOFF file.
+`ttf`か`woff`か`ttf,woff`を指定した場合、TTFと/またはWOFFファイルを埋め込みます。
 
-If there’re more file types in `types` option they will be included as usual `url(font.type)` CSS links.
+もし`types`でより多くのファイルタイプを指定している場合、それらは通常の`url(font.type)`であるCSSリンクとしてCSSに組み込まれます。
 
 #### ligatures
 
 Type: `boolean` Default: `false`
 
-If `true` the generated font files and stylesheets will be generated with opentype ligature features. The character sequences to be replaced by the ligatures are determined by the file name (without extension) of the original SVG or EPS.
+`true`を指定することで、opentype ligature形式でFontファイルとCSSファイルが生成されます。SVG/EPSの拡張子を除くファイル名からligaturesによって置き換えられます。
 
-For example, you have a heart icon in `love.svg` file. The HTML `<h1>I <span class="ligature-icons">love</span> you!</h1>` will be rendered as `I ♥ you!`.
+例えば、`love.svg`ファイルにハートアイコンがある場合には、`<h1>I <span class="ligature-icons">love</span> you!</h1>`は`I ♥ you!`とレンダリングされます。
 
 #### rename
 
 Type: `function` Default: `path.basename`
 
-You can use this function to change how file names translates to class names (the part after `icon_` or `icon-`). By default it’s a name of a file.
+この関数を使うことで、ファイル名からclass名（`icon_`や`icon-`以降の部分）に変換する処理を変更することができます。デフォルトでは、ファイル名を利用します。
+
 
 For example you can group your icons into several folders and add folder name to class name:
 
